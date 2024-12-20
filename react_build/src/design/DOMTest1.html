@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #box {
+        position: relative;
+        width: 800px;
+        height: 30px;
+        padding: 10px;
+        border: 5px solid darkblue;
+        ;
+    }
+
+    #ball {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <div id="ball"></div>
+    </div>
+    <button onClick="start()">Start</button>
+    <button onClick="stop()">Stop</button>
+
+    <script>
+        let ball = document.querySelector("#ball");
+        let value = 0;
+
+        intervalCalls=[];
+
+        function move() {
+            value += 1;
+            if (value > 789) value = 0;
+            ball.style.left = `${value}px`;
+        }
+
+        function start(){
+            const myInterval = setInterval(move,10);
+
+            intervalCalls.push(myInterval);
+        }
+
+        function stop(){
+            intervalCalls.forEach( fn => {
+                clearInterval(fn)
+            });
+            intervalCalls=[];
+            //clearInterval(intervalCalls.pop());
+        }
+
+    </script>
+
+</body>
+
+</html>
