@@ -1,13 +1,13 @@
 import { 
     View, 
-    Text, 
     StyleSheet, 
     TouchableOpacity, 
 } from "react-native";
-
+import Text from "./Text";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Post from "../model/Post";
 import { useMutation, useQueryClient } from "react-query";
+import { useTheme }  from "@react-navigation/native";
 
 
 const styles = StyleSheet.create({
@@ -55,7 +55,7 @@ async function deletePost(id:number) {
   }
 
 export default function Item({item} : {item : Post}) {
-
+ 	const { colors } = useTheme();
 	const queryClient = useQueryClient();
 	const remove = useMutation(deletePost,{
 		onMutate : async id => {
@@ -67,7 +67,7 @@ export default function Item({item} : {item : Post}) {
 	});
 
 	return (
-		<View style={styles.card}>
+		<View style={[styles.card, {borderColor : colors.border}]}>
 			<View style={styles.cardHeader}>
 				<View style={styles.author}>
 					<Ionicons

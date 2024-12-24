@@ -1,8 +1,8 @@
 import { ScrollView,Text } from "react-native";
 
-import Item from "../components/Item";
+import Item from "../../components/Item";
 import { useQuery, useQueryClient } from "react-query";
-import Post from "../model/Post";
+import Post from "../../model/Post";
 const api = "http://172.30.27.119:8088/posts";
 
 async function fetchPosts(): Promise<Post[]> {
