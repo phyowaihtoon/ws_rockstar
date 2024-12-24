@@ -1,3 +1,4 @@
+require('dotenv').config(); // Ensure environment variables are loaded
 const express = require("express");
 const app = express();
 const { PrismaClient } = require("@prisma/client");

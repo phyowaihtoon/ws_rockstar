@@ -19,7 +19,7 @@ export const ThemeProvider = ({children} : {children : React.ReactNode}) => {
 
     useEffect(() => {
         const loadTheme = async () => {
-            const savedTheme = await AsyncStorage.getTheme(THEME_STORAGE_KEY);
+            const savedTheme = await AsyncStorage.getItem(THEME_STORAGE_KEY);
             if(savedTheme !== null){
                 setIsDark(savedTheme === "dark");
             }
